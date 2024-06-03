@@ -1,70 +1,86 @@
-import { Image, StyleSheet, Platform } from 'react-native';
+import { Image, StyleSheet, Text, View } from "react-native";
+import React from "react";
+import { moderateScale, verticalScale } from 'react-native-size-matters';
 
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
-
-export default function HomeScreen() {
+const MainScreen = ({ navigation }) => {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
+    <View style={styles.container}>
+      <View style={styles.topImageContainer}>
         <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
+          source={require("../../assets/topVector.png")}
+          style={styles.topImage}
         />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({ ios: 'cmd + d', android: 'cmd + m' })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this starter app.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{' '}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+      </View>
+      <View style={styles.helloContainer}>
+        <Text style={styles.helloText}>Hola</Text>
+      </View>
+      <View>
+        <Text style={styles.signInText}>¡Organiza tu día, alcanza tus metas!</Text>
+      </View>
+      <View style={styles.buttonContainer}>
+        <View style={styles.button}>
+          <Text style={styles.textButton}
+            onPress={() => navigation.navigate('LoginScreen')}
+          >Inicia Sesión</Text>
+          <Text style={styles.textButton}
+            onPress={() => navigation.navigate('RegisterScreen')}
+          >Registrate</Text>
+        </View>
+      </View>
+      <View>
+        <Image
+          source={require("../../assets/vector.png")}
+          style={styles.belowImage}
+        />
+      </View>
+    </View>
   );
-}
+};
+
+export default MainScreen;
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
+  container: {
+    backgroundColor: "#F5F5F5",
+    flex: 1,
+  },
+  buttonContainer: {
+    justifyContent: 'center',
     alignItems: 'center',
-    gap: 8,
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
+  button: {
+    flexDirection: 'row',
+    justifyContent: "space-around",
+    width: '80%',
   },
-  reactLogo: {
-    height: 178,
-    width: 290,
+  textButton: {
+    backgroundColor: "#945DAD",
+    color: '#FFFFFF',
+    fontSize: moderateScale(16),
+    textAlign: 'center',
+    padding: moderateScale(10),
+    marginVertical: verticalScale(218),
+  },
+  topImage: {
+    width: "100%",
+    height: moderateScale(130),
+  },
+  belowImage: {
+    height: verticalScale(113),
+    width: moderateScale(115),
+    position: "absolute",
     bottom: 0,
     left: 0,
-    position: 'absolute',
+  },
+  helloText: {
+    textAlign: "center",
+    fontSize: moderateScale(70),
+    fontWeight: "500",
+    color: "#262626",
+  },
+  signInText: {
+    textAlign: "center",
+    fontSize: moderateScale(18),
+    color: "#262626"
   },
 });

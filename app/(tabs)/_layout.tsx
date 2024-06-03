@@ -1,37 +1,27 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
+import { createStackNavigator } from '@react-navigation/stack';
+import React from "react";
+import MainScreen from './index';
+import LoginScreen from './LoginScreen';
+import RegisterScreen from './RegisterScreen';
+import HomeScreen from './HomeScreen'
+import SeeTaskScreen from './SeeTaskScreen'
+import EditScreen from './EditScreen'
+import SettingScreen from './SettingScreen'
+import AddTaskScreen from './AddTaskScreen'
 
-import { TabBarIcon } from '@/components/navigation/TabBarIcon';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
+const Stack = createStackNavigator();
 
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
+export default function MyStack() {
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-      }}>
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Home',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="explore"
-        options={{
-          title: 'Explore',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
-          ),
-        }}
-      />
-    </Tabs>
+    <Stack.Navigator>
+      <Stack.Screen name="index" component={MainScreen} options={{ headerShown: false }}/>
+      <Stack.Screen name="LoginScreen" component={LoginScreen} options={{ headerShown: false }}/>
+      <Stack.Screen name="RegisterScreen" component={RegisterScreen} options={{ headerShown: false }}/>
+      <Stack.Screen name="HomeScreen" component={HomeScreen} options={{ headerShown: false }}/>
+      <Stack.Screen name="SeeTaskScreen" component={SeeTaskScreen} options={{ headerShown: false }}/>
+      <Stack.Screen name="EditScreen" component={EditScreen} options={{ headerShown: false }}/>
+      <Stack.Screen name="SettingScreen" component={SettingScreen} options={{ headerShown: false }}/>
+      <Stack.Screen name="AddTaskScreen" component={AddTaskScreen} options={{ headerShown: false }}/>
+    </Stack.Navigator>
   );
 }
