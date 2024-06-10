@@ -3,11 +3,11 @@ import React from "react";
 import MainScreen from './index';
 import LoginScreen from './LoginScreen';
 import RegisterScreen from './RegisterScreen';
-import HomeScreen from './HomeScreen'
-import SeeTaskScreen from './SeeTaskScreen'
-import EditScreen from './EditScreen'
-import SettingScreen from './SettingScreen'
-import AddTaskScreen from './AddTaskScreen'
+import HomeScreen from './HomeScreen';
+import SeeTaskScreen from './SeeTaskScreen';
+import EditScreen from './EditScreen';
+import SettingScreen from './SettingScreen';
+import AddTaskScreen from './AddTaskScreen';
 
 const Stack = createStackNavigator();
 

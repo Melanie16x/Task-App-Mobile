@@ -5,7 +5,6 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { moderateScale } from 'react-native-size-matters';
 
-// Esquema de validación con Yup
 const validationSchema = Yup.object().shape({
   title: Yup.string().required('El título de la tarea es requerido'),
   description: Yup.string().required('La descripción de la tarea es requerida'),
@@ -14,7 +13,6 @@ const validationSchema = Yup.object().shape({
 const AddTaskScreen = ({ navigation }) => {
 
   const handleSave = (values) => {
-    // Aquí puedes manejar la lógica de guardado
     navigation.goBack();
   };
 
